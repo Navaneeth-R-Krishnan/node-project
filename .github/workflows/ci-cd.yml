@@ -13,24 +13,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          ref: main  # Ensure to specify the branch explicitly
+          ref: main  
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Update to Node.js version 20
+          node-version: '20'  
 
       - name: Install dependencies
         run: npm install
-        continue-on-error: true  # Continue on errors to handle failed installs
+        continue-on-error: true  
 
       - name: Run tests
         run: npm test
-        continue-on-error: true  # Continue on errors to run tests even if install fails
+        continue-on-error: true  
 
       - name: Upload Test Results
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
           name: test-results
-          path: test-results.xml  # Replace with actual path to test results if applicable
+          path: test-results.xml 
